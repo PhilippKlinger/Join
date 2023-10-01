@@ -5,7 +5,6 @@ async function initLogin(){
   await getMsg();
 }
 
-
 async function loadUserLogin() {
   let users = JSON.parse(await getItem("userLogin"));
   userLogin = users;
@@ -34,6 +33,3 @@ function resetForm() {
   signUpPassword.value = "";
   signUpbtn.disabled = false;
 }
-
-
-

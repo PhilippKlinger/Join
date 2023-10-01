@@ -18,7 +18,6 @@ function assignedTo() {
     showAssignedToList();
 }
 
-
 /**
  * This function shows a list of the assigned contacts.
  */
@@ -38,7 +37,6 @@ function showAssignedToList() {
         `;
     }
 }
-
 
 /**
  * This function remove an assigned contact when clicked on and enables it again.
@@ -60,7 +58,6 @@ function removeAssignee(position, objId) {
         assignee.selectedIndex = 0;
     }
 }
-
 
 /**
  * This function lets the user add subtasks.
@@ -87,7 +84,6 @@ function newSubtask() {
     document.getElementById('subtasks').value = '';
 }
 
-
 /**
  * This function clears all selectable fields, input fields and arrays, and resets all buttons.
  */
@@ -104,7 +100,6 @@ function clearFields() {
     cancelNewCategory();
     enableContactsForAssignedTo();
 }
-
 
 /**
  * This function enables a contact.
@@ -129,7 +124,6 @@ function changeClearBtnIconToHover(IdDefault, IdHover) {
     document.getElementById(IdHover).classList.remove('d-none');
 }
 
-
 /**
  * This function changes the clear button icon when the clear button is in default.
  * 
@@ -149,7 +143,6 @@ function createTask() {
     let description = document.getElementById('description').value;
     let category = document.getElementById('category').innerText;
     let date = dateArray;
-
     let newTask = {
         'id': '',
         'title': title,
@@ -164,13 +157,11 @@ function createTask() {
         'doneSubTasks': 0,
         'color': contactsColors
     };
-
     newTaskArray.push(newTask);
     saveTasks();
     clearFields();
     taskAddedToBoard();
 }
-
 
 /**
  * This asynchronous function saves the new created task in the remote storage and the user will get to the board page.
@@ -179,7 +170,6 @@ async function saveTasks() {
     await setItem('createdTask', JSON.stringify(newTaskArray));
     renderBoard();
 }
-
 
 /**
  * This function shows a popup as a confirm to secure the user that his new created task has been added to the board.
@@ -191,7 +181,6 @@ function taskAddedToBoard() {
     `;
     setTimeout(function () { closePopUp() }, 2000);
 }
-
 
 /**
  * This function closes a popup.

@@ -40,18 +40,6 @@ function generateLegalNoticeScreenHTML() {
         Groß-Umstädter Str. 5<br>
         64747 Breuberg<br>
     </p>
-    <p>Max Mustermann<br>
-        Mustermannstraße 5<br>
-        Musterhausen<br>
-    </p>
-    <p>Max Mustermann<br>
-        Mustermannstraße 5<br>
-        Musterhausen<br>
-    </p>
-    <p>Max Mustermann<br>
-        Mustermannstraße 5<br>
-        Musterhausen<br>
-    </p>
     <h2>Kontakt</h2>
     <p>Telefon: +491704952704<br />
         E-Mail: klinger.breuberg@web.de</h3>

@@ -8,7 +8,6 @@ function generateAddTaskContent() {
     `;
 }
 
-
 function generateContentLeftAndRightContainer() {
     return /*html*/ `
         <div class="contentLeftAndRight">
@@ -144,7 +143,6 @@ function generateContentLeftAndRightContainer() {
         </div>
     `;
 }
-
 
 function generateTwoButtonsContainer() {
     return /*html*/ `

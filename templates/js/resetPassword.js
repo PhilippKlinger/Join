@@ -24,13 +24,11 @@ async function backToLogin() {
 }
 
 function resetUserPassword(email) {
-
     let i = userLogin.findIndex(function (a) {
         return a.email === email;
     });
     console.log(i);
     return i;
-
 }
 
 async function setNewPassword() {

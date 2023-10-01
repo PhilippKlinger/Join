@@ -1,4 +1,5 @@
 let earliest = [];
+greeted = false;
 
 async function initSummary() {
   await loadUserLogin();
@@ -6,13 +7,15 @@ async function initSummary() {
   document.getElementById('contentSection').innerHTML = getSummarySection();
   document.getElementById('headlineDiv').innerHTML += getSummaryHeadlineDiv();
   document.getElementById('contentAndGreeting').innerHTML += getSummaryinnerContent();
-  document.getElementById('contentAndGreeting').innerHTML += getSummaryGreeting(currentUser);
+  if(!greeted) {
+    document.getElementById('contentAndGreeting').innerHTML += getSummaryGreeting(currentUser);
+    greeted = true;
+  }
   loadTaskStat();
   searchDate();
   searchUrgentTasks()
   removeClassContentSectionAddTask();
 }
-
 
 function getCurrentUser() {
   let name;
@@ -28,7 +31,6 @@ function getCurrentUser() {
   return name;
 }
 
-
 function searchUrgentTasks() {
   let prio = 'urgent';
   let urgentTasks = newTaskArray.filter(function (a) {
@@ -40,24 +42,21 @@ function searchUrgentTasks() {
   `;
 }
 
-
 function searchDate() {
-  if(newTaskArray.length == 0){
-
+  if (newTaskArray.length == 0) {
   }
-  else{
-  const minDate =
-    newTaskArray.map(element => {
-      return element.date;
+  else {
+    const minDate =
+      newTaskArray.map(element => {
+        return element.date;
+      });
+    earliest = minDate.reduce(function (pre, cur) {
+      return Date.parse(pre) > Date.parse(cur) ? cur : pre;
     });
-  earliest = minDate.reduce(function (pre, cur) {
-    return Date.parse(pre) > Date.parse(cur) ? cur : pre;
-  });
-  console.log(earliest);
-  generateDate(earliest);
+    console.log(earliest);
+    generateDate(earliest);
+  }
 }
-}
-
 
 function generateDate(earliest) {
   document.getElementById('insertDate').innerHTML = /*html*/`
@@ -65,12 +64,10 @@ function generateDate(earliest) {
     `
 }
 
-
 function loadTaskStat() {
   let stat = '';
   for (let i = 0; i < newTaskArray.length; i++) {
     const element = newTaskArray[i];
-
     stat = newTaskArray[i]['stat'];
     let taskStat = newTaskArray.filter(function (a) {
       return a.stat === stat;
@@ -81,18 +78,12 @@ function loadTaskStat() {
   }
 }
 
-
-
-// GENERATE HTML CODE
-
 function getSummaryHeadlineDiv() {
-  return /*html*/`
-        
+  return /*html*/`   
           <h1 id="summaryHeadline" class="summaryHeadline">Summary</h1>
           <p id="nutshelltext" class="nutshelltext">Everything in a nutshell!</p>
   `
 }
-
 
 function getSummaryinnerContent() {
   return /*html*/`
@@ -142,11 +133,9 @@ function getSummaryinnerContent() {
   `
 }
 
-
 function getSummarySection() {
-    return /*html*/`
+  return /*html*/`
       <div id="summarySection" class="summarySection">
-        
         <div id="headlineDiv" class="d-flex headlineDiv">
         <div id= "managementText" class="managementText">Kanban Project Management Tool</div>
         </div>
@@ -154,13 +143,12 @@ function getSummarySection() {
         </div>
       </div>
   `;
-  }
+}
 
-
-  function getSummaryGreeting(currentUser) {
-    return /*html*/`
+function getSummaryGreeting(currentUser) {
+  return /*html*/`
               <div id="greeting" class="d-flex center greeting">
               <p class="goodMorning">Good Morning <br><b class="blueText">${currentUser}!<b></p>
             </div>
     `
- }
+}

@@ -16,7 +16,6 @@ function openAddTaskOverlay(stat) {
     renderHeadlineOverlay();
 }
 
-
 /**
  * This function renders the headline in the overlay and executes 3 other functions.
  */
@@ -30,14 +29,12 @@ function renderHeadlineOverlay() {
     activatePrioButtonsOverlay();
 }
 
-
 /**
  * This function closes the overlay.
  */
 function closeOverlay() {
     document.getElementById('overlaySection').classList.add('d-none');
 }
-
 
 /**
  * This function renders a div-container in the overlay called 'contentLeftAndRightContainerOverlay' and executes 2 other functions.
@@ -47,7 +44,6 @@ function renderContentLeftAndRightOverlay() {
     renderTwoButtonsContainerOverlay();
     setMinDate('dateOverlay');
 }
-
 
 /**
  * This function renders the contacts as an option-tag to the assignedTo-List.
@@ -63,7 +59,6 @@ function renderContactsAddTaskOverlay() {
     }
 }
 
-
 /**
  * This function renders a div-container with a 'clear' button and a 'create task' button and executes another function.
  */
@@ -71,7 +66,6 @@ function renderTwoButtonsContainerOverlay() {
     document.getElementById('twoButtonsContainerOverlay').innerHTML = generateTwoButtonsContainerOverlay();
     clearFieldsOverlay();
 }
-
 
 /**
  * This function updates the date in the dateArray with the new due date.
@@ -81,7 +75,6 @@ function pushDateOverlay() {
     dateArray.splice(0, 1, dueDate);
 }
 
-
 /**
  * This function first executes the low-function so the prio button 'low' ist active and sets up event listeners.
  */
@@ -89,25 +82,19 @@ function activatePrioButtonsOverlay() {
     lowOverlay();
     let urgentBtn = document.getElementById('urgentOverlay');
     urgentBtn.addEventListener("click", urgentOverlay);
-
     let mediumBtn = document.getElementById('mediumOverlay');
     mediumBtn.addEventListener("click", mediumOverlay);
-
     let lowBtn = document.getElementById('lowOverlay');
     lowBtn.addEventListener("click", lowOverlay);
-
     let resetBtn = document.getElementById('resetOverlay');
     resetBtn.addEventListener("click", lowOverlay);
-
     let assignBtn = document.getElementById('assignedToOverlay');
     assignBtn.addEventListener("change", assignedToOverlay);
-
     document.getElementById('addTaskForm').addEventListener('submit', function (event) {
         event.preventDefault();
         createTaskOverlay();
     });
 }
-
 
 /**
  * This function activates the urgent button and deactivates the other two prio buttons.
@@ -115,17 +102,13 @@ function activatePrioButtonsOverlay() {
 function urgentOverlay() {
     let prioValue = document.getElementById('urgentOverlay').value;
     prio = prioValue;
-
     document.getElementById('urgentOverlay').classList.add('urgent');
     document.getElementById('urgentIconOverlay').src = './img/urgentWhiteIcon.png';
-
     document.getElementById('mediumOverlay').classList.remove('medium');
     document.getElementById('mediumIconOverlay').src = './img/mediumIcon.png';
-
     document.getElementById('lowOverlay').classList.remove('low');
     document.getElementById('lowIconOverlay').src = './img/lowIcon.png';
 }
-
 
 /**
  * This function activates the medium button and deactivates the other two prio buttons.
@@ -133,17 +116,13 @@ function urgentOverlay() {
 function mediumOverlay() {
     let prioValue = document.getElementById('mediumOverlay').value;
     prio = prioValue;
-
     document.getElementById('mediumOverlay').classList.add('medium');
     document.getElementById('mediumIconOverlay').src = './img/mediumWhiteIcon.png';
-
     document.getElementById('urgentOverlay').classList.remove('urgent');
     document.getElementById('urgentIconOverlay').src = './img/urgentIcon.png';
-
     document.getElementById('lowOverlay').classList.remove('low');
     document.getElementById('lowIconOverlay').src = './img/lowIcon.png';
 }
-
 
 /**
  * This function activates the low button and deactivates the other two prio buttons.
@@ -151,17 +130,13 @@ function mediumOverlay() {
 function lowOverlay() {
     let prioValue = document.getElementById('lowOverlay').value;
     prio = prioValue;
-
     document.getElementById('lowOverlay').classList.add('low');
     document.getElementById('lowIconOverlay').src = './img/lowWhiteIcon.png';
-
     document.getElementById('mediumOverlay').classList.remove('medium');
     document.getElementById('mediumIconOverlay').src = './img/mediumIcon.png';
-
     document.getElementById('urgentOverlay').classList.remove('urgent');
     document.getElementById('urgentIconOverlay').src = './img/urgentIcon.png';
 }
-
 
 /**
  * This function opens the dropdown menu to select a category.
@@ -176,7 +151,6 @@ function openCategoryDropdownOverlay() {
     document.getElementById('categoryOverlay').onclick = closeCategoryDropdownOverlay;
 }
 
-
 /**
  * This function allows the user to create a new category.
  */
@@ -187,7 +161,6 @@ function newCategoryOverlay() {
     document.getElementById('categoryOverlay').style.display = 'none';
 }
 
-
 /**
  * This function lets the user choose the color for the new category.
  * 
@@ -196,7 +169,6 @@ function newCategoryOverlay() {
 function addColorToNewCategoryOverlay(color) {
     document.getElementById('newCategoryColorOverlay').style.backgroundColor = color;
 }
-
 
 /**
  * This function cancels the new category and close the input field.
@@ -210,7 +182,6 @@ function cancelNewCategoryOverlay() {
     document.getElementById('categoryOverlay').innerHTML = 'Select task category';
 }
 
-
 /**
  * This function confirms the new category if the input field isn't empty.
  */
@@ -218,7 +189,6 @@ function confirmNewCategoryOverlay() {
     let newCategory = document.getElementById('newCategoryInputOverlay').value;
     let newCategoryColor = document.getElementById('newCategoryColorOverlay').style.backgroundColor;
     let newCategoryInput = document.getElementById('newCategoryInputOverlay');
-
     if (newCategoryInput.value == '') {
         newCategoryInput.focus();
     } else {
@@ -230,7 +200,6 @@ function confirmNewCategoryOverlay() {
         document.getElementById('categoryOverlay').style.display = 'flex';
     }
 }
-
 
 /**
  * This function shows the selected category and executes another function.
@@ -247,7 +216,6 @@ function selectedCategoryOverlay(category, color) {
     closeCategoryDropdownOverlay();
 }
 
-
 /**
  * This function closes the dropdown menu that shows the categories that are selectable.
  */
@@ -261,7 +229,6 @@ function closeCategoryDropdownOverlay() {
     document.getElementById('categoryOverlay').onclick = openCategoryDropdownOverlay;
 }
 
-
 /**
  * This function disables the selected contact and if it's not already existend it will be pushed in arrays, and also another function will executed.
  */
@@ -273,7 +240,6 @@ function assignedToOverlay() {
     selectedAssignee2.disabled = true;
     let i = assignee.selectedIndex - 1;
     let objId = i + 1;
-
     if (assignedToNames.indexOf(selectedAssignee) === -1) {
         assignedToNames.push(selectedAssignee);
         contactsColors.push(color);
@@ -282,14 +248,12 @@ function assignedToOverlay() {
     showAssignedToListOverlay();
 }
 
-
 /**
  * This function shows a list of the assigned contacts.
  */
 function showAssignedToListOverlay() {
     let content = document.getElementById("assignedToListOverlay");
     content.innerHTML = "";
-
     for (let i = 0; i < assignedToNames.length; i++) {
         const name = assignedToNames[i];
         let bgColor = contactsColors[i];
@@ -303,7 +267,6 @@ function showAssignedToListOverlay() {
     }
 }
 
-
 /**
  * This function remove an assigned contact when clicked on and enables it again.
  * 
@@ -315,16 +278,13 @@ function removeAssigneeOverlay(position, objId) {
     contactsColors.splice(position, 1);
     objIds.splice(position, 1);
     showAssignedToListOverlay();
-
     let assignee = document.getElementById("assignedToOverlay");
     let selectedAssignee2 = assignee.options[objId];
     selectedAssignee2.disabled = false;
-
     if (assignedToNames.length === 0) {
         assignee.selectedIndex = 0;
     }
 }
-
 
 /**
  * This function clears all selectable fields, input fields and arrays, and resets all buttons.
@@ -343,7 +303,6 @@ function clearFieldsOverlay() {
     enableContactsForAssignedToOverlay();
 }
 
-
 /**
  * This function enables a contact.
  */
@@ -355,7 +314,6 @@ function enableContactsForAssignedToOverlay() {
     }
 }
 
-
 /**
  * This function creates a new Task, pushes it in the 'newTaskArray' and executes 3 other functions.
  */
@@ -364,7 +322,6 @@ function createTaskOverlay() {
     let description = document.getElementById('description').value;
     let category = document.getElementById('categoryOverlay').innerText;
     let date = dateArray;
-
     let newTask = {
         'id': '',
         'title': title,
@@ -379,7 +336,6 @@ function createTaskOverlay() {
         'doneSubTasks': 0,
         'color': contactsColors
     };
-
     newTaskArray.push(newTask);
     saveTasks();
     clearFieldsOverlay();
