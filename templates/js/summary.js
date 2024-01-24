@@ -1,5 +1,4 @@
 let earliest = [];
-greeted = false;
 
 async function initSummary() {
   await loadUserLogin();
@@ -7,10 +6,7 @@ async function initSummary() {
   document.getElementById('contentSection').innerHTML = getSummarySection();
   document.getElementById('headlineDiv').innerHTML += getSummaryHeadlineDiv();
   document.getElementById('contentAndGreeting').innerHTML += getSummaryinnerContent();
-  if(!greeted) {
-    document.getElementById('contentAndGreeting').innerHTML += getSummaryGreeting(currentUser);
-    greeted = true;
-  }
+  document.getElementById('contentAndGreeting').innerHTML += getSummaryGreeting(currentUser);
   loadTaskStat();
   searchDate();
   searchUrgentTasks()

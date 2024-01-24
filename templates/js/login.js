@@ -13,7 +13,7 @@ function leadToSignUp() {
   window.location.href = "signUp.html";
 }
 function guestLogIn() {
-  window.location.replace("/../index.html");
+  window.location.replace("https://join.philipp-klinger.com/index.html");
 }
 
 async function login() {
@@ -26,7 +26,7 @@ async function login() {
   console.log(user);
   if (user) {
     console.log("user gefunden");
-    window.location.replace("/../index.html");
+    window.location.replace("https://join.philipp-klinger.com/index.html");
   } else {
     document.getElementById("msgBox").innerHTML = `Email oder Passwort nicht korrekt!`;
     document.getElementById("msgBoxDiv").classList.remove("d-none");
